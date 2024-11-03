@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -141,3 +142,7 @@ CORS_ALLOW_HEADERS = [
     "content-type",
     "authorization",
 ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic으로 모인 파일을 둘 위치
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # 정적 파일 폴더 지정
