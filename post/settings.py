@@ -20,21 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&l&k6$v5af(=j(wqj)$srv1dc3g&54um4=cr^e!9k7fz-z&o_c'
+SECRET_KEY = 'django-insecure-ri*y)(ybw#8t^2lvy_+=k1=7_u*ttul4n5lz1$qzl7%^u6=lfb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    ".vercel.app",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://group-c-health.vercel.app",
-    "https://group-c-dgango.vercel.app",
-]
 
 # Application definition
 
@@ -45,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post_app',
     'rest_framework',
     'corsheaders',
+    'post',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # 추가: 배포 시 필요한 정적 파일 경로
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -150,23 +141,3 @@ CORS_ALLOW_HEADERS = [
     "content-type",
     "authorization",
 ]
-
-# Logging 설정: DEBUG=False일 때 오류 로그를 남길 수 있도록 파일 로깅 추가
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'error.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    },
-}
