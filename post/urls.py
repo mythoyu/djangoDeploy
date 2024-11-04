@@ -19,6 +19,9 @@ from django.urls import include, path
 
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),  # 관리자 페이지 경로 유지
     path('api/posts/', views.posts, name='posts'),  # api/posts/
@@ -26,3 +29,6 @@ urlpatterns = [
     path('api/search/', views.search_posts, name='search_posts'),  # api/search/
     path('', views.posts, name='home'),  # 루트 경로를 게시글 목록으로 지정
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

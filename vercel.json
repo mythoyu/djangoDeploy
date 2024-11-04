@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "post/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://username:password@hostname:port/dbname"
+  }
 }
