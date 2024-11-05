@@ -30,5 +30,5 @@ urlpatterns = [
     path('', views.posts, name='home'),  # 루트 경로를 게시글 목록으로 지정
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
