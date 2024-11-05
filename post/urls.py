@@ -26,8 +26,8 @@ urlpatterns = [
     path('api/posts/', views.posts, name='posts'),  # api/posts/
     path('api/posts/<slug:slug>/', views.posts_detail, name='post-detail'),  # api/posts/<slug>/
     path('api/search/', views.search_posts, name='search_posts'),  # api/search/
-    # path('', views.posts, name='home'),  # 루트 경로를 게시글 목록으로 지정
-    path('', admin.site.urls, name='home'),  # 루트 경로를 게시글 목록으로 지정
+    path('', views.posts, name='home'),  # 루트 경로를 게시글 목록으로 지정
+    # path('', admin.site.urls, name='home'),  # 루트 경로를 게시글 목록으로 지정
 ]
 
 # add at the last
