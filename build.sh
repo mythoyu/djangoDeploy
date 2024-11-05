@@ -2,7 +2,7 @@
 
 # Update pip
 echo "Updating pip..."
-python3.10 pip install -U pip
+python3.12 pip install -U pip
 
 # Install dependencies
 
@@ -12,12 +12,12 @@ pip install -r requirements.txt
 echo "Making migrations..."
 # python3.10 manage.py makemigrations post --noinput
 # python3.10 manage.py migrate --noinput
-python3.10 manage.py migrate 
+python3.12 manage.py migrate 
 
 
 # Collect staticfiles
 echo "Collect static..."
-python3.10 manage.py collectstatic
+python3.12 manage.py collectstatic
 
 echo "Build process completed!"
 
