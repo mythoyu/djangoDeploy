@@ -29,6 +29,7 @@ urlpatterns = [
     path('', views.posts, name='home'),  # 루트 경로를 게시글 목록으로 지정
     # path('', admin.site.urls, name='home'),  # 루트 경로를 게시글 목록으로 지정
 ]
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # add at the last
 if settings.DEBUG:  # 개발 환경에서만 static 파일을 서빙하도록 설정

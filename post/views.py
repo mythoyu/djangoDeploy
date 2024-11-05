@@ -1,10 +1,15 @@
+from django.db.models import Q
 from django.shortcuts import render
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .models import Post
 from .serializers import PostSerializer
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework import status
-from django.db.models import Q
+
+# from supabase import Client, create_client
+
+
 
 # 게시글 목록 조회(GET), 게시글 작성(POST)
 @api_view(['GET', 'POST'])
@@ -63,5 +68,22 @@ def search_posts(request):
     if query:
         posts = Post.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
         serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        # return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response('asbv', status=status.HTTP_200_OK)
     return Response([], status=status.HTTP_200_OK)  # 검색어가 없을 경우 빈 리스트 반환
+    # if query:
+    #     # Supabase에서 검색 쿼리 실행
+    #     response = supabase \
+    #         .from_('posts') \
+    #         .select("*") \
+    #         .ilike("title", f"%{query}%") \
+    #         .execute()
+
+    #     if response.error:
+    #         return Response({"error": str(response.error)}, status=400)
+
+    #     # 검색 결과 반환
+    #     return Response(response.data, status=200)
+
+    # # 검색어가 없을 경우 빈 리스트 반환
+    # return Response([], status=200)
