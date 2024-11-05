@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ri*y)(ybw#8t^2lvy_+=k1=7_u*ttul4n5lz1$qzl7%^u6=lfb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,13 +88,13 @@ WSGI_APPLICATION = 'post.wsgi.application'
 # }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
     }
 }
 
@@ -156,9 +156,5 @@ CORS_ALLOW_HEADERS = [
     "authorization",
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),  # 개발 시 사용할 정적 파일 경로
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, "collected_static")  # 배포 시 사용할 정적 파일 경로
-STATIC_URL = "/static/"
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')

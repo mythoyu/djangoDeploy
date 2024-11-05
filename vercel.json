@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "post/wsgi.py",
@@ -6,21 +7,21 @@
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     },
     {
-      "src": "build.sh",
+      "src": "build_files.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles"
+        "distDir": "staticfiles_build"
       }
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "post/wsgi.py"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "postgresql://username:password@hostname:port/dbname"
-  },
-  "outputDirectory": "staticfiles"
+  ]
 }
