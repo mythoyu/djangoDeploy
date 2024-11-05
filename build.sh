@@ -16,8 +16,8 @@ python3.12 manage.py migrate
 
 
 # Collect staticfiles
-echo "Collect static..."
-python3.12 manage.py collectstatic
+# echo "Collect static..."
+# python3.12 manage.py collectstatic
 
 echo "Build process completed!"
 
