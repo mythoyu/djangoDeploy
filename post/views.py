@@ -69,7 +69,6 @@ def search_posts(request):
         posts = Post.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-        # return Response('asbv', status=status.HTTP_200_OK)
     return Response([], status=status.HTTP_200_OK)  # 검색어가 없을 경우 빈 리스트 반환
     # if query:
     #     # Supabase에서 검색 쿼리 실행
